@@ -8,20 +8,20 @@ html,body{
     width: 100%;
 }
 
-#box1{
-    width: 200px;
+div{
     height: 200px;
+    width: 200px;
+ 
+}
+
+#box1{
     background: #e48b8b;
 }
 
 #box2{
-    width: 200px;
-    height: 200px;
     background: #52e16e;
 }
 
 #box3{
-    width: 200px;
-    height: 200px;
     background: #559ce2;
 }
