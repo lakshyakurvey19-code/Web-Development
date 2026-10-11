@@ -7,15 +7,22 @@ html,body{
     height: 100%;
     width: 100%;
 }
-
+body{
+    background: white;
+    /* display: flex;   */
+}
+main{
+    display: flex;
+}
 div{
     height: 200px;
     width: 200px;
- 
-}
+    text-align: center; 
 
+}
 #box1{
-    background: #e48b8b;
+    background: #68d39b;
+    border-radius: 30px;
 }
 
 #box2{
