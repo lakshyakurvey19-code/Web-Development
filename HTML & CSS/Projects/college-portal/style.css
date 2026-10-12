@@ -1,0 +1,137 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.header {
+    background: #ffffff;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h2 {
+    color: #0f3d64;
+}
+
+.logo span {
+    color: #e67e22;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 8px;
+    font-weight: bold;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #e67e22;
+}
+
+.btn {
+    display: inline-block;
+    padding: 9px 18px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background: #e67e22;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background: #ffffff;
+    color: #0f3d64;
+    margin-left: 10px;
+}
+
+/* Hero Section */
+.hero {
+    background: #0f3d64;
+    color: #ffffff;
+    text-align: center;
+    padding: 65px 20px;
+}
+
+.tagline {
+    background: #e67e22;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.hero h1 {
+    font-size: 32px;
+    margin: 15px 0 10px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 20px;
+}
+
+/* Cards Section */
+.highlights {
+    padding: 40px 0;
+}
+
+.card-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background: #ffffff;
+    flex: 1;
+    padding: 22px;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.card-icon {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.card h3 {
+    color: #0f3d64;
+    margin-bottom: 8px;
+}
+
+/* Footer */
+.footer {
+    background: #0b2842;
+    color: #ccc;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 13px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nav-wrapper,
+    .card-grid {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}

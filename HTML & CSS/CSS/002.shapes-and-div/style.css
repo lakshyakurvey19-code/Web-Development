@@ -1,0 +1,35 @@
+*{
+    margin: 0%;
+    padding: 0%;
+
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background: #b1e58d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: rgb(200, 242, 242);
+    width: 30%;
+    height: 30%;
+    font-size: xx-large;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#box1{
+    background-color: beige;
+}
+#box2{
+    background-color: aqua;
+}

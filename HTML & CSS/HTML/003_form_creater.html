@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Registration Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1f4e79;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 700px;
+            max-width: 100%;
+            margin: auto;
+            padding: 15px 20px;
+            background-color: #d9eaf7;
+            border: 1px solid #1f4e79;
+            box-shadow: 0px 3px 8px #999;
+        }
+
+        .main-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .main-table td {
+            padding: 6px 5px;
+            vertical-align: middle;
+            font-size: 14px;
+        }
+
+        .label {
+            width: 125px;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 135px;
+            height: 30px;
+            padding: 4px;
+            border: 1px solid #888;
+        }
+
+        textarea {
+            width: 250px;
+            height: 65px;
+            padding: 5px;
+            border: 1px solid #888;
+            resize: vertical;
+        }
+
+        select {
+            height: 30px;
+            border: 1px solid #888;
+            padding: 2px;
+        }
+
+        .note {
+            font-size: 12px;
+            color: #333;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        /* Qualification Table */
+        .qualification {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .qualification th {
+            text-align: left;
+            padding: 4px;
+            font-size: 13px;
+        }
+
+        .qualification td {
+            padding: 4px;
+            font-size: 13px;
+        }
+
+        .qualification th:nth-child(1) {
+            width: 45px;
+        }
+
+        .qualification th:nth-child(2) {
+            width: 100px;
+        }
+
+        .qualification th:nth-child(3),
+        .qualification th:nth-child(4),
+        .qualification th:nth-child(5) {
+            width: auto;
+        }
+
+        .qualification input {
+            width: 100%;
+            height: 30px;
+            border: 1px solid #888;
+        }
+
+        .qualification-note {
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .hobbies input[type="text"] {
+            width: 135px;
+        }
+
+        .buttons {
+            text-align: center;
+            padding-top: 15px !important;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 7px 18px;
+            margin: 3px;
+            border: none;
+            background-color: #1f4e79;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #163a5c;
+        }
+
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            form {
+                padding: 10px;
+            }
+
+            .main-table td {
+                font-size: 12px;
+            }
+
+            .label {
+                width: 110px;
+            }
+
+            .qualification {
+                font-size: 11px;
+            }
+
+            .qualification th,
+            .qualification td {
+                padding: 2px;
+            }
+
+            textarea {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>STUDENT REGISTRATION FORM</h2>
+
+    <form>
+
+        <table class="main-table">
+
+            <!-- First Name -->
+            <tr>
+                <td class="label">FIRST NAME</td>
+                <td>
+                    <input type="text" maxlength="30">
+                    <span class="note">(max 30 characters a-z and A-Z)</span>
+                </td>
+            </tr>
+
+            <!-- Last Name -->
+            <tr>
+                <td class="label">LAST NAME</td>
+                <td>
+                    <input type="text" maxlength="30">
+                    <span class="note">(max 30 characters a-z and A-Z)</span>
+                </td>
+            </tr>
+
+            <!-- Date of Birth -->
+            <tr>
+                <td class="label">DATE OF BIRTH</td>
+                <td>
+                    Day:
+                    <select>
+                        <option>--</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                        <option>23</option>
+                        <option>24</option>
+                        <option>25</option>
+                        <option>26</option>
+                        <option>27</option>
+                        <option>28</option>
+                        <option>29</option>
+                        <option>30</option>
+                        <option>31</option>
+                    </select>
+
+                    Month:
+                    <select>
+                        <option>--</option>
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                    </select>
+
+                    Year:
+                    <select>
+                        <option>----</option>
+                        <option>2000</option>
+                        <option>2001</option>
+                        <option>2002</option>
+                        <option>2003</option>
+                        <option>2004</option>
+                        <option>2005</option>
+                        <option>2006</option>
+                        <option>2007</option>
+                        <option>2008</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- Email -->
+            <tr>
+                <td class="label">EMAIL ID</td>
+                <td>
+                    <input type="email">
+                </td>
+            </tr>
+
+            <!-- Mobile -->
+            <tr>
+                <td class="label">MOBILE NUMBER</td>
+                <td>
+                    <input type="text" maxlength="10">
+                    <span class="note">(10 digit number)</span>
+                </td>
+            </tr>
+
+            <!-- Gender -->
+            <tr>
+                <td class="label">GENDER</td>
+                <td>
+                    Male <input type="radio" name="gender">
+                    Female <input type="radio" name="gender">
+                </td>
+            </tr>
+
+            <!-- Address -->
+            <tr>
+                <td class="label">ADDRESS</td>
+                <td>
+                    <textarea></textarea>
+                </td>
+            </tr>
+
+            <!-- City -->
+            <tr>
+                <td class="label">CITY</td>
+                <td>
+                    <input type="text" maxlength="30">
+                    <span class="note">(max 30 characters a-z and A-Z)</span>
+                </td>
+            </tr>
+
+            <!-- Pin Code -->
+            <tr>
+                <td class="label">PIN CODE</td>
+                <td>
+                    <input type="text" maxlength="6">
+                    <span class="note">(6 digit number)</span>
+                </td>
+            </tr>
+
+            <!-- State -->
+            <tr>
+                <td class="label">STATE</td>
+                <td>
+                    <input type="text" maxlength="30">
+                    <span class="note">(max 30 characters a-z and A-Z)</span>
+                </td>
+            </tr>
+
+            <!-- Country -->
+            <tr>
+                <td class="label">COUNTRY</td>
+                <td>
+                    <input type="text" value="India">
+                </td>
+            </tr>
+
+            <!-- Hobbies -->
+            <tr>
+                <td class="label">HOBBIES</td>
+                <td class="hobbies">
+                    Drawing <input type="checkbox">
+                    Singing <input type="checkbox">
+                    Dancing <input type="checkbox">
+                    Sketching <input type="checkbox">
+                    <br>
+
+                    Others <input type="checkbox">
+                    <input type="text">
+                </td>
+            </tr>
+
+            <!-- Qualification -->
+            <tr>
+                <td class="label">QUALIFICATION</td>
+
+                <td>
+
+                    <table class="qualification">
+
+                        <tr>
+                            <th>Sl.No.</th>
+                            <th>Examination</th>
+                            <th>Board</th>
+                            <th>Percentage</th>
+                            <th>Year of Passing</th>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Class X</td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Class XII</td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>Graduation</td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td>Masters</td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                        </tr>
+
+                    </table>
+
+                    <div class="qualification-note">
+                        (10 char max)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        (upto 2 decimal)
+                    </div>
+
+                </td>
+            </tr>
+
+            <!-- Courses -->
+            <tr>
+                <td class="label">
+                    COURSES<br>
+                    APPLIED FOR
+                </td>
+
+                <td>
+                    BCA <input type="radio" name="course">
+                    B.Com <input type="radio" name="course">
+                    B.Sc <input type="radio" name="course">
+                    B.A <input type="radio" name="course">
+                </td>
+            </tr>
+
+            <!-- Buttons -->
+            <tr>
+                <td colspan="2" class="buttons">
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset">
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+
+</body>
+
+</html>

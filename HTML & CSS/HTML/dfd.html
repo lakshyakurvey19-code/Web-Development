@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --primary-light: #eef2ff;
+            --accent: #8b5cf6;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --border-focus: #6366f1;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --card-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.2);
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            color: var(--text-main);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Ambient floating glow effects */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        body::before {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #6366f1, transparent 70%);
+            top: 5%;
+            left: 10%;
+        }
+
+        body::after {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, #a855f7, transparent 70%);
+            bottom: 5%;
+            right: 10%;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--card-shadow);
+            padding: 44px 48px;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            animation: formEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes formEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Header styling */
+        .form-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4f46e5, #9333ea);
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            box-shadow: 0 10px 22px rgba(79, 70, 229, 0.35);
+            margin-bottom: 16px;
+            transition: var(--transition);
+        }
+
+        .header-icon:hover {
+            transform: scale(1.05) rotate(4deg);
+        }
+
+        .form-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.6px;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            font-size: 14.5px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Form Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .label-icon {
+            display: inline-flex;
+            align-items: center;
+            color: #6366f1;
+        }
+
+        /* Inputs, selects, and textarea */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 14.5px;
+            font-family: inherit;
+            color: var(--text-main);
+            background-color: #f8fafc;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input[type="text"]:hover,
+        input[type="email"]:hover,
+        input[type="password"]:hover,
+        input[type="date"]:hover,
+        select:hover,
+        textarea:hover {
+            border-color: #cbd5e1;
+            background-color: #ffffff;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus {
+            background-color: #ffffff;
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            line-height: 1.5;
+        }
+
+        /* Option pills / chip cards for Radio & Checkboxes */
+        .option-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .option-card {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .option-card input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .option-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+            background-color: #f8fafc;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .option-card:hover .option-label {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
+        }
+
+        /* Checked state for radio and checkbox */
+        .option-card input:checked + .option-label {
+            background-color: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+        }
+
+        .option-card input:focus-visible + .option-label {
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+        }
+
+        /* Custom Checkbox visual */
+        .custom-check {
+            width: 18px;
+            height: 18px;
+            border-radius: 5px;
+            border: 1.5px solid #94a3b8;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 11px;
+            color: transparent;
+            background: #ffffff;
+        }
+
+        .option-card input:checked + .option-label .custom-check {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Custom Radio visual */
+        .custom-radio {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1.5px solid #94a3b8;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            background: #ffffff;
+        }
+
+        .option-card input:checked + .option-label .custom-radio {
+            border-color: var(--primary);
+        }
+
+        .option-card input:checked + .option-label .custom-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--primary);
+        }
+
+        /* Buttons Section */
+        .form-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+            padding-top: 10px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            flex: 1;
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: inherit;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            outline: none;
+            border: none;
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: #ffffff;
+            box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.45);
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+            box-shadow: 0 14px 26px -4px rgba(79, 70, 229, 0.55);
+            transform: translateY(-2px);
+        }
+
+        input[type="submit"]:active {
+            transform: translateY(0);
+            box-shadow: 0 6px 14px -2px rgba(79, 70, 229, 0.4);
+        }
+
+        input[type="reset"] {
+            background-color: #f1f5f9;
+            color: #475569;
+            border: 1.5px solid var(--border-color);
+        }
+
+        input[type="reset"]:hover {
+            background-color: #e2e8f0;
+            color: #0f172a;
+            transform: translateY(-2px);
+        }
+
+        input[type="reset"]:active {
+            transform: translateY(0);
+        }
+
+        /* Responsive styling for smaller devices */
+        @media (max-width: 640px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .form-header h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="form-header">
+            <div class="header-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+            </div>
+            <h2>Student Registration Form</h2>
+            <p>Please fill in your details to complete your student registration.</p>
+        </div>
+
+        <form action="#" method="POST">
+            <div class="form-grid">
+                
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="name">
+                        <span class="label-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </span>
+                        Name
+                    </label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">
+                        <span class="label-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </span>
+                        Email
+                    </label>
+                    <input type="email" id="email" name="email" placeholder="example@college.edu" required>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">
+                        <span class="label-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </span>
+                        Password
+                    </label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="form-group">
+                    <label for="dob">
+                        <span class="label-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </span>
+                        Date of Birth
+                    </label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+
+                <!-- Gender -->
+                <div class="form-group full-width">
+                    <label>
+                        <span class="label-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 8v8M8 12h8"></path>
+                            </svg>
+                        </span>
+                        Gender
+                    </label>
+                    <div class="option-group">
+                        <label class="option-card">
+                            <input type="radio" name="gender" value="male">
+                            <span class="option-label">
+                                <span class="custom-radio"></span>
+                                <span>👨 Male</span>
+                            </span>
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="gender" value="female">
+                            <span class="option-label">
+                                <span class="custom-radio"></span>
+                                <span>👩 Female</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Hobbies -->
+                <div class="form-group full-width">
+                    <label>
+                        <span class="label-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                        </span>
+                        Hobbies
+                    </label>
+                    <div class="option-group">
+                        <label class="option-card">
+                            <input type="checkbox" name="hobby" value="reading">
+                            <span class="option-label">
+                                <span class="custom-check">✓</span>
+                                <span>📖 Reading</span>
+                            </span>
+                        </label>
+                        <label class="option-card">
+                            <input type="checkbox" name="hobby" value="sports">
+                            <span class="option-label">
+                                <span class="custom-check">✓</span>
+                                <span>⚽ Sports</span>
+                            </span>
+                        </label>
+                        <label class="option-card">
+                            <input type="checkbox" name="hobby" value="music">
+                            <span class="option-label">
+                                <span class="custom-check">✓</span>
+                                <span>🎵 Music</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Branch -->
+                <div class="form-group full-width">
+                    <label for="branch">
+                        <span class="label-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                        </span>
+                        Branch
+                    </label>
+                    <select id="branch" name="branch" required>
+                        <option value="" disabled selected>Select your branch</option>
+                        <option value="CSE">CSE</option>
+                        <option value="IT">IT</option>
+                        <option value="ECE">ECE</option>
+                        <option value="ME">ME</option>
+                        <option value="Civil">Civil</option>
+                    </select>
+                </div>
+
+                <!-- Address -->
+                <div class="form-group full-width">
+                    <label for="address">
+                        <span class="label-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </span>
+                        Address
+                    </label>
+                    <textarea id="address" name="address" rows="4" placeholder="Enter your full residential address..."></textarea>
+                </div>
+
+            </div>
+
+            <!-- Submit & Reset Actions -->
+            <div class="form-actions">
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

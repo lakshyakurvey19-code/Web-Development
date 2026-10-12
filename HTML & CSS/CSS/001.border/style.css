@@ -1,0 +1,29 @@
+/* *{
+    margin: 0%;
+    padding: 0%;
+
+} */
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background: #b1e58d;
+}
+
+
+
+#box1{
+    background-color: beige;
+    height: 20%;
+    width: 20%;
+    border-style:double;
+    border-radius: 10px;
+}
+#box2{
+    background-color: aqua;
+    height: 30%;
+    width: 30%;
+}
