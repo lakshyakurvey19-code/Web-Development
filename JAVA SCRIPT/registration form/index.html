@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexusID | Modern Multi-Step Registration</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="ambient-glow orb-1"></div>
+  <div class="ambient-glow orb-2"></div>
+  <div class="ambient-glow orb-3"></div>
+
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-cube"></i>
+      </div>
+      <span class="brand-name">Nexus<span>ID</span></span>
+    </div>
+    
+    <div class="header-actions">
+      <div class="draft-badge" id="draftStatus">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <span>Draft saved</span>
+      </div>
+      
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark/light theme" title="Toggle Theme">
+        <i class="fa-solid fa-moon moon-icon"></i>
+        <i class="fa-solid fa-sun sun-icon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Card Container -->
+  <main class="main-container">
+    <div class="registration-card">
+      
+      <!-- Card Header -->
+      <div class="card-header">
+        <div class="badge-tag">
+          <i class="fa-solid fa-shield-halved"></i> 256-Bit SSL Encrypted
+        </div>
+        <h1 class="form-title">Create Your Account</h1>
+        <p class="form-subtitle">Join thousands of creators building the next-gen web</p>
+      </div>
+
+      <!-- Step Indicator / Progress Stepper -->
+      <div class="stepper-wrapper">
+        <div class="step-progress-track">
+          <div class="step-progress-bar" id="stepperProgressBar"></div>
+        </div>
+        
+        <div class="step-item active" data-step="1">
+          <div class="step-circle">
+            <span class="step-number">1</span>
+            <i class="fa-solid fa-check step-check"></i>
+          </div>
+          <span class="step-label">Personal</span>
+        </div>
+
+        <div class="step-item" data-step="2">
+          <div class="step-circle">
+            <span class="step-number">2</span>
+            <i class="fa-solid fa-check step-check"></i>
+          </div>
+          <span class="step-label">Security</span>
+        </div>
+
+        <div class="step-item" data-step="3">
+          <div class="step-circle">
+            <span class="step-number">3</span>
+            <i class="fa-solid fa-check step-check"></i>
+          </div>
+          <span class="step-label">Profile</span>
+        </div>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="registrationForm" novalidate autocomplete="off">
+        
+        <!-- ==============================================
+             STEP 1: PERSONAL INFORMATION
+             ============================================== -->
+        <div class="form-step active" id="step1">
+          <div class="step-title-wrap">
+            <h2 class="step-heading">Personal Details</h2>
+            <p class="step-subheading">Tell us a bit about who you are</p>
+          </div>
+
+          <div class="form-grid">
+            <!-- Full Name -->
+            <div class="form-group col-span-2">
+              <label for="fullName">Full Name <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-regular fa-user input-icon"></i>
+                <input 
+                  type="text" 
+                  id="fullName" 
+                  name="fullName" 
+                  placeholder="e.g. Alex Henderson" 
+                  required 
+                />
+                <span class="status-indicator"></span>
+              </div>
+              <span class="error-msg" id="fullNameError"></span>
+            </div>
+
+            <!-- Email Address -->
+            <div class="form-group col-span-2">
+              <label for="email">Work or Personal Email <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-regular fa-envelope input-icon"></i>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  placeholder="alex@example.com" 
+                  required 
+                />
+                <span class="status-indicator"></span>
+              </div>
+              <span class="error-msg" id="emailError"></span>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-phone input-icon"></i>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone" 
+                  placeholder="+1 (555) 000-0000" 
+                  required 
+                />
+                <span class="status-indicator"></span>
+              </div>
+              <span class="error-msg" id="phoneError"></span>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="form-group">
+              <label for="dob">Date of Birth <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-regular fa-calendar input-icon"></i>
+                <input 
+                  type="date" 
+                  id="dob" 
+                  name="dob" 
+                  required 
+                />
+                <span class="status-indicator"></span>
+              </div>
+              <span class="error-msg" id="dobError"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             STEP 2: ACCOUNT SECURITY
+             ============================================== -->
+        <div class="form-step" id="step2">
+          <div class="step-title-wrap">
+            <h2 class="step-heading">Account Security</h2>
+            <p class="step-subheading">Choose a unique username and ultra-secure password</p>
+          </div>
+
+          <div class="form-grid">
+            <!-- Username -->
+            <div class="form-group col-span-2">
+              <label for="username">Choose Username <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <span class="input-prefix">@</span>
+                <input 
+                  type="text" 
+                  id="username" 
+                  name="username" 
+                  placeholder="alexhenderson" 
+                  required 
+                />
+                <span class="status-indicator"></span>
+              </div>
+              <span class="error-msg" id="usernameError"></span>
+              <span class="hint-text">Only lowercase letters, numbers, and underscores (min 4 chars)</span>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group col-span-2">
+              <label for="password">Create Password <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input 
+                  type="password" 
+                  id="password" 
+                  name="password" 
+                  placeholder="Enter strong password" 
+                  required 
+                />
+                <button type="button" class="password-toggle" id="togglePassword" aria-label="Toggle password visibility">
+                  <i class="fa-regular fa-eye eye-open"></i>
+                  <i class="fa-regular fa-eye-slash eye-closed"></i>
+                </button>
+              </div>
+              <span class="error-msg" id="passwordError"></span>
+
+              <!-- Password Strength Meter -->
+              <div class="strength-meter-box">
+                <div class="strength-header">
+                  <span class="strength-label">Password Strength:</span>
+                  <span class="strength-level" id="strengthText">None</span>
+                </div>
+                <div class="strength-bar-track">
+                  <div class="strength-bar" id="strengthBar"></div>
+                </div>
+
+                <!-- Checklist Badges -->
+                <div class="requirement-grid">
+                  <div class="req-item" id="reqLength">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>8+ Characters</span>
+                  </div>
+                  <div class="req-item" id="reqUpper">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Uppercase (A-Z)</span>
+                  </div>
+                  <div class="req-item" id="reqLower">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Lowercase (a-z)</span>
+                  </div>
+                  <div class="req-item" id="reqNumber">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Number (0-9)</span>
+                  </div>
+                  <div class="req-item" id="reqSymbol">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Special (@$!%*?)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group col-span-2">
+              <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-shield-halved input-icon"></i>
+                <input 
+                  type="password" 
+                  id="confirmPassword" 
+                  name="confirmPassword" 
+                  placeholder="Repeat your password" 
+                  required 
+                />
+                <button type="button" class="password-toggle" id="toggleConfirmPassword" aria-label="Toggle confirm password visibility">
+                  <i class="fa-regular fa-eye eye-open"></i>
+                  <i class="fa-regular fa-eye-slash eye-closed"></i>
+                </button>
+              </div>
+              <span class="error-msg" id="confirmPasswordError"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             STEP 3: PROFILE & PREFERENCES
+             ============================================== -->
+        <div class="form-step" id="step3">
+          <div class="step-title-wrap">
+            <h2 class="step-heading">Profile & Preferences</h2>
+            <p class="step-subheading">Personalize your developer journey</p>
+          </div>
+
+          <!-- Avatar Upload Area -->
+          <div class="form-group col-span-2">
+            <label>Profile Picture</label>
+            <div class="avatar-section">
+              <div class="avatar-preview-container" id="avatarPreviewContainer">
+                <img id="avatarImage" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Avatar preview" />
+                <div class="avatar-overlay" id="avatarOverlay">
+                  <i class="fa-solid fa-camera"></i>
+                  <span>Change</span>
+                </div>
+              </div>
+              
+              <div class="avatar-controls">
+                <input type="file" id="avatarInput" accept="image/*" class="sr-only" />
+                <div class="avatar-buttons">
+                  <button type="button" class="btn btn-secondary btn-sm" id="uploadAvatarBtn">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload Photo
+                  </button>
+                  <button type="button" class="btn btn-ghost btn-sm" id="removeAvatarBtn">
+                    <i class="fa-regular fa-trash-can"></i> Reset
+                  </button>
+                </div>
+                <p class="hint-text mt-1">PNG, JPG or WEBP up to 5MB. Or pick a preset below:</p>
+                
+                <!-- Quick Avatar Presets -->
+                <div class="preset-avatars" id="presetAvatars">
+                  <img class="preset-img active" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Preset 1" data-preset="1" />
+                  <img class="preset-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Preset 2" data-preset="2" />
+                  <img class="preset-img" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80" alt="Preset 3" data-preset="3" />
+                  <img class="preset-img" src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=200&q=80" alt="Preset 4" data-preset="4" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Primary Role Selector -->
+          <div class="form-group col-span-2">
+            <label>Primary Role <span class="required">*</span></label>
+            <div class="role-grid">
+              <label class="role-card active">
+                <input type="radio" name="primaryRole" value="Full-Stack Developer" checked />
+                <div class="role-content">
+                  <i class="fa-solid fa-code role-icon"></i>
+                  <span class="role-title">Developer</span>
+                  <span class="role-desc">Frontend, backend or full-stack</span>
+                </div>
+              </label>
+
+              <label class="role-card">
+                <input type="radio" name="primaryRole" value="UI/UX Designer" />
+                <div class="role-content">
+                  <i class="fa-solid fa-pen-nib role-icon"></i>
+                  <span class="role-title">Designer</span>
+                  <span class="role-desc">UI/UX, visual, or motion design</span>
+                </div>
+              </label>
+
+              <label class="role-card">
+                <input type="radio" name="primaryRole" value="Product Manager" />
+                <div class="role-content">
+                  <i class="fa-solid fa-diagram-project role-icon"></i>
+                  <span class="role-title">Manager</span>
+                  <span class="role-desc">Product, lead, or coordinator</span>
+                </div>
+              </label>
+
+              <label class="role-card">
+                <input type="radio" name="primaryRole" value="Student / Hobbyist" />
+                <div class="role-content">
+                  <i class="fa-solid fa-graduation-cap role-icon"></i>
+                  <span class="role-title">Student</span>
+                  <span class="role-desc">Learning & exploring tech</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Interests / Tags -->
+          <div class="form-group col-span-2">
+            <label>Interests & Topics (Select all that apply)</label>
+            <div class="tag-cloud" id="tagCloud">
+              <span class="interest-pill active" data-tag="JavaScript"><i class="fa-brands fa-js"></i> JavaScript</span>
+              <span class="interest-pill active" data-tag="React"><i class="fa-brands fa-react"></i> React</span>
+              <span class="interest-pill" data-tag="Node.js"><i class="fa-brands fa-node-js"></i> Node.js</span>
+              <span class="interest-pill active" data-tag="UI/UX Design"><i class="fa-solid fa-palette"></i> UI/UX Design</span>
+              <span class="interest-pill" data-tag="AI & ML"><i class="fa-solid fa-brain"></i> AI & ML</span>
+              <span class="interest-pill" data-tag="Cloud Computing"><i class="fa-solid fa-cloud"></i> Cloud</span>
+              <span class="interest-pill" data-tag="Open Source"><i class="fa-brands fa-github"></i> Open Source</span>
+            </div>
+          </div>
+
+          <!-- Terms & Conditions Checkbox -->
+          <div class="form-group col-span-2 mt-2">
+            <label class="checkbox-container">
+              <input type="checkbox" id="termsCheck" name="termsCheck" required />
+              <span class="checkmark"></span>
+              <span class="checkbox-text">
+                I agree to the <a href="javascript:void(0)" id="openTermsModalLink" class="accent-link">Terms of Service</a> and <a href="javascript:void(0)" id="openPrivacyModalLink" class="accent-link">Privacy Policy</a> <span class="required">*</span>
+              </span>
+            </label>
+            <span class="error-msg" id="termsError"></span>
+          </div>
+
+          <!-- Newsletter Opt-in Switch -->
+          <div class="form-group col-span-2">
+            <label class="toggle-container">
+              <input type="checkbox" id="newsletterCheck" name="newsletterCheck" checked />
+              <span class="toggle-slider"></span>
+              <span class="toggle-text">Receive product releases, tips, and developer updates</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             BOTTOM ACTION BUTTONS
+             ============================================== -->
+        <div class="card-footer">
+          <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">
+            <i class="fa-solid fa-arrow-left"></i> Back
+          </button>
+
+          <div class="right-buttons">
+            <button type="button" class="btn btn-primary" id="nextBtn">
+              Continue <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
+              <span class="btn-text"><i class="fa-solid fa-bolt"></i> Complete Registration</span>
+              <span class="spinner" style="display: none;"></span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Social Login Divider & Options -->
+      <div class="social-divider">
+        <span>or sign up with</span>
+      </div>
+
+      <div class="social-buttons-grid">
+        <button type="button" class="btn-social" id="googleLoginBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          Google
+        </button>
+        <button type="button" class="btn-social" id="githubLoginBtn">
+          <i class="fa-brands fa-github"></i>
+          GitHub
+        </button>
+      </div>
+
+      <!-- Footer login link -->
+      <div class="existing-account">
+        Already have an account? <a href="javascript:void(0)" class="accent-link">Sign In</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==============================================
+       SUCCESS MODAL POPUP
+       ============================================== -->
+  <div class="modal-backdrop" id="successModal" aria-hidden="true">
+    <div class="modal-dialog celebration-dialog">
+      <div class="modal-content">
+        <!-- Close button -->
+        <button type="button" class="modal-close-btn" id="closeSuccessModal" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="celebration-badge">
+          <div class="celebration-circle">
+            <i class="fa-solid fa-check"></i>
+          </div>
+        </div>
+
+        <h2 class="modal-title">Welcome to the Nexus!</h2>
+        <p class="modal-desc">Your registration was successful. Your developer profile has been generated.</p>
+
+        <!-- Profile Card Summary -->
+        <div class="profile-summary-card">
+          <div class="summary-top">
+            <img id="summaryAvatar" src="" alt="User Avatar" class="summary-avatar" />
+            <div class="summary-info">
+              <h3 id="summaryName">John Doe</h3>
+              <p id="summaryUsername">@johndoe</p>
+              <span class="role-badge" id="summaryRole">Full-Stack Developer</span>
+            </div>
+          </div>
+
+          <div class="summary-details">
+            <div class="summary-detail-row">
+              <span class="detail-label"><i class="fa-regular fa-envelope"></i> Email</span>
+              <span class="detail-value" id="summaryEmail">john@example.com</span>
+            </div>
+            <div class="summary-detail-row">
+              <span class="detail-label"><i class="fa-solid fa-phone"></i> Phone</span>
+              <span class="detail-value" id="summaryPhone">+1 555-0192</span>
+            </div>
+            <div class="summary-detail-row">
+              <span class="detail-label"><i class="fa-solid fa-tags"></i> Interests</span>
+              <span class="detail-value" id="summaryInterests">JavaScript, React</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-primary btn-block" id="continueToDashboardBtn">
+            <i class="fa-solid fa-rocket"></i> Go to Dashboard
+          </button>
+          <button type="button" class="btn btn-secondary btn-block" id="createAnotherBtn">
+            <i class="fa-solid fa-user-plus"></i> Register Another Account
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================
+       TERMS & PRIVACY MODAL
+       ============================================== -->
+  <div class="modal-backdrop" id="termsModal" aria-hidden="true">
+    <div class="modal-dialog terms-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title"><i class="fa-solid fa-file-contract"></i> Terms of Service</h2>
+          <button type="button" class="modal-close-btn" id="closeTermsModal" aria-label="Close Terms modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="modal-body terms-scrollable">
+          <h4>1. Acceptance of Terms</h4>
+          <p>By creating an account on NexusID, you acknowledge and agree that you have read, understood, and accept these standard terms, conditions, and privacy protocols.</p>
+          
+          <h4>2. User Accounts & Security</h4>
+          <p>You are solely responsible for maintaining the confidentiality of your credentials, password, and account settings. You agree to notify us immediately regarding any unauthorized access.</p>
+          
+          <h4>3. Data & Privacy Policy</h4>
+          <p>We respect your privacy. All information gathered during the onboarding process is processed securely with industry standard AES-256 encryption. We never sell or distribute your data to third parties.</p>
+
+          <h4>4. Acceptable Use</h4>
+          <p>You agree not to use the service for any unlawful activities, code injections, distributed attacks, or unauthorized data scraping.</p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="declineTermsBtn">Cancel</button>
+          <button type="button" class="btn btn-primary" id="acceptTermsBtn">
+            <i class="fa-solid fa-check"></i> I Agree & Accept
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Custom JavaScript Logic -->
+  <script src="logic.js"></script>
+</body>
+</html>
