@@ -8,9 +8,29 @@
             let s4 = Number(prompt("Enter coa marks:"));     
             let s5 = Number(prompt("Enter maths marks:"));      
             let total = s1 + s2 + s3 + s4 + s5;     
-            let percentage = total / 5; 
-            document.write("Total Marks = " + total + "<br>"); 
-            document.write("Percentage = " + percentage + "%"); 
+            let marks = total / 5;
+            
+            if(marks >= 90){
+                document.write("Greade A")
+            }
+            else if (marks >= 90){
+                document.write("Grade A"); 
+            } 
+            else if (marks >= 75){     
+                document.write("Grade B"); 
+            } 
+            else if (marks >= 60) {     
+                document.write("Grade C"); 
+            } 
+            else if (marks >= 40) {     
+                document.write("Grade D"); 
+            } 
+            else {     
+                document.write("Fail"); 
+            } 
+
+            document.write("<br>" + "Total Marks = " + total + "<br>"); 
+            document.write("Percentage = " + marks + "%"); 
         </script> 
     </body> 
 </html> 

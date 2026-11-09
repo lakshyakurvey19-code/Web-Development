@@ -7,71 +7,87 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Header & Navigation -->
-    <header class="header">
-        <div class="container nav-wrapper">
-            <div class="logo">
-                <h2>SHIVOM VIDYAPEETH ENG. MED. SCHOOL <span>RAIPUR</span></h2>
-                <small>CBSE</small>
-            </div>
-
-            
-            <a href="#admissions" class="btn btn-primary">Apply Now</a>
+    <header>
+        <div class="logo">
+            <h2>SSIPMT</h2>
+            <p>Student Portal</p>
         </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#notices">Notices</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
 
-    <!-- Hero / Front Page Section -->
-    <section id="home" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <span class="tagline">Approved by AICTE | Affiliated to CSVTU</span>
-            <h1>Shape Your Future With Quality Education</h1>
-            <p>
-                Welcome to SSIPMT Raipur. We provide high-quality engineering, technology, 
-                and management education with state-of-the-art laboratories and excellent placements.
-            </p>
-            <div class="hero-btns">
-                <a href="#courses" class="btn btn-primary">Explore Courses</a>
-                <a href="#contact" class="btn btn-secondary">Contact Us</a>
+    <section class="welcome" id="home">
+        <h1>Welcome to College Portal</h1>
+        <p>Manage your academics, check notices and stay updated.</p>
+        <a href="#dashboard" class="btn">View Dashboard</a>
+    </section>
+
+    <section class="dashboard" id="dashboard">
+        <h2>Student Dashboard</h2>
+        <p class="subtitle">Your academic information at one place.</p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>My Profile</h3>
+                <p>View your personal and academic details.</p>
+                <a href="#contact">View Profile</a>
             </div>
+
+            <div class="card">
+                <h3>Attendance</h3>
+                <p>Keep track of your class attendance.</p>
+                <h2>92.34%</h2>
+            </div>
+
+            <div class="card">
+                <h3>Assignments</h3>
+                <p>Check your pending assignments.</p>
+                <h2>02 Pending</h2>
+            </div>
+
+            <div class="card">
+                <h3>Examinations</h3>
+                <p>Get updates about upcoming examinations.</p>
+                <a href="#notices">Check Updates</a>
+            </div>
+
         </div>
     </section>
 
-    <!-- Simple Highlights Section -->
-    <section class="highlights">
-        <div class="container">
-            <div class="card-grid">
-                <!-- Card 1 -->
-                <div class="card">
-                    <div class="card-icon">🎓</div>
-                    <h3>Top Academics</h3>
-                    <p>Offering B.Tech in CSE, IT, AI &amp; DS, along with MBA and MCA programs guided by experienced mentors.</p>
-                </div>
+    <section class="notices" id="notices">
+        <h2>Latest Notices</h2>
 
-                <!-- Card 2 -->
-                <div class="card">
-                    <div class="card-icon">💼</div>
-                    <h3>Great Placements</h3>
-                    <p>Dedicated training and placement cell connecting students with top multinational tech companies.</p>
-                </div>
+        <div class="notice-box">
+            <span>18 Oct 2026</span>
+            <p>Students are advised to check their examination schedule.</p>
+        </div>
 
-                <!-- Card 3 -->
-                <div class="card">
-                    <div class="card-icon">🏫</div>
-                    <h3>Modern Campus</h3>
-                    <p>Wi-Fi enabled lush green campus equipped with advanced computing labs, central library, and sports arena.</p>
-                </div>
-            </div>
+        <div class="notice-box">
+            <span>16 Oct 2026</span>
+            <p>Submit your pending assignments before the deadline.</p>
+        </div>
+
+        <div class="notice-box">
+            <span>14 Oct 2026</span>
+            <p>Project work updates should be shared with the faculty.</p>
         </div>
     </section>
 
-    <!-- Simple Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 SSIPMT Raipur. Shri Shankaracharya Institute of Professional Management &amp; Technology.</p>
-            <p class="footer-sub">Mujgahan, Raipur, Chhattisgarh | Email: info@ssipmt.com</p>
-        </div>
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>Shri Shankaracharya Institute of Professional Management and Technology</p>
+        <p>Raipur, Chhattisgarh, India</p>
+        <p>Email: info@college.edu</p>
+    </section>
+
+    <footer>
+        <p>© 2026 College Portal | Made by a Student</p>
     </footer>
 
 </body>

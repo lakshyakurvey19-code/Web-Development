@@ -120,6 +120,7 @@ html,body{
 #box1{
     height: 90%;
     width: 47%;
+    background-color: white;
 }
 
 #box2{
@@ -136,6 +137,26 @@ html,body{
     align-items: center;
     justify-content: center;
     display: flex;
+}
+
+#tagline h1{
+    font-weight: 600;
+}
+
+#box1 h1{
+    font-weight: 600;
+    color: rgb(0, 0, 109);
+    font-size: 50px;
+    margin: 30px 10px;
+    margin-bottom: 60px;
+}
+
+#box1 p{
+    font-weight: lighter;
+    font-size: xx-large;
+    margin: 30px 10px;
+    margin-bottom: 60px;
+
 }
 
 #btns{
